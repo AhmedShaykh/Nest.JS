@@ -1,6 +1,6 @@
-import { Body, Controller, Delete, Get, Param, ParseBoolPipe, ParseIntPipe, Post, Put } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Param, ParseBoolPipe, ParseIntPipe, Post, Put, ValidationPipe } from "@nestjs/common";
 import { BookService } from "./book.service";
-import { Book, BookDto } from "./book.dto";
+import { Book, BookDto, BookDto2 } from "./book.dto";
 import { BookDataPipe } from "./bookData.pipe";
 
 @Controller("book")
@@ -31,6 +31,12 @@ export class BookController {
 
     @Post("/addData")
     addData(@Body(new BookDataPipe()) book: BookDto): string { // Add Custom Pipe
+        console.log(book);
+        return "Add Book";
+    };
+
+    @Post("/addData2")
+    addData2(@Body(new ValidationPipe()) book: BookDto2): string { // This Built-In Method Work Custom Decorator Based Validation
         console.log(book);
         return "Add Book";
     };
