@@ -4,3 +4,8 @@ export interface Book {
     author: string;
     published: string;
 };
+
+export interface BookDto {
+    id: number;
+    name: string;
+};
