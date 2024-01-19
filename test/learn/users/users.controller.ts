@@ -1,7 +1,8 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from "@nestjs/common";
+import { Controller, Get, Post, Body, Patch, Param, Delete, BadRequestException } from "@nestjs/common";
+import { UserException } from "./Exceptions/users.exception";
+import { UpdateUserDto } from "./DTO/update-user.dto";
+import { CreateUserDto } from "./DTO/create-user.dto";
 import { UsersService } from "./users.service";
-import { CreateUserDto } from "./create-user.dto";
-import { UpdateUserDto } from "./update-user.dto";
 
 @Controller("users")
 export class UsersController {
@@ -15,12 +16,17 @@ export class UsersController {
 
   @Get()
   findAll() {
-    return this.usersService.findAll();
+    throw new BadRequestException({ // Exception
+      status: 404,
+      error: "Custom Error Message"
+    });
+    // return this.usersService.findAll();
   };
 
   @Get(":id")
   findOne(@Param("id") id: string) {
-    return this.usersService.findOne(+id);
+    throw new UserException(); // Custom Exception
+    // return this.usersService.findOne(+id);
   };
 
   @Patch(":id")
