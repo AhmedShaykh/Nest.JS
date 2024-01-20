@@ -1,15 +1,31 @@
-import { Body, Controller, Delete, Get, Param, ParseBoolPipe, ParseIntPipe, Post, Put, ValidationPipe } from "@nestjs/common";
+import {
+    Body,
+    Controller,
+    Delete,
+    Get,
+    Param,
+    ParseBoolPipe,
+    ParseIntPipe,
+    Post,
+    Put,
+    UseGuards,
+    ValidationPipe
+} from "@nestjs/common";
 import { BookService } from "./book.service";
 import { Book, BookDto, BookDto2 } from "./book.dto";
 import { BookDataPipe } from "./bookData.pipe";
+import { BookGuard } from "./book.guard";
 
 @Controller("book")
+@UseGuards(new BookGuard) // Add Guard This API Run In Postman & It Work Class All Methods
 export class BookController {
 
     constructor(private bookService: BookService) { };
 
     @Get("/books")
+    // @UseGuards(new BookGuard) // It Work Specific Method
     getBooks(): Book[] {
+        console.log("Guard API Approval");
         return this.bookService.getBooks();
     };
 
