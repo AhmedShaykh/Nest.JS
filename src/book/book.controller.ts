@@ -8,22 +8,27 @@ import {
     ParseIntPipe,
     Post,
     Put,
+    Req,
+    Res,
     UseGuards,
+    UseInterceptors,
     ValidationPipe
 } from "@nestjs/common";
 import { BookService } from "./book.service";
 import { Book, BookDto, BookDto2 } from "./book.dto";
 import { BookDataPipe } from "./bookData.pipe";
+import { BookInterceptor } from "./book.interceptor";
 import { BookGuard } from "./book.guard";
+import { Request, Response } from "express";
 
 @Controller("book")
-@UseGuards(new BookGuard) // Add Guard This API Run In Postman & It Work Class All Methods
+// @UseGuards(new BookGuard) // Add Guard This API Run In Postman & It Work Class All Methods
 export class BookController {
 
     constructor(private bookService: BookService) { };
 
     @Get("/books")
-    // @UseGuards(new BookGuard) // It Work Specific Method
+    @UseGuards(new BookGuard) // It Work Specific Method
     getBooks(): Book[] {
         console.log("Guard API Approval");
         return this.bookService.getBooks();
@@ -38,6 +43,16 @@ export class BookController {
     findBookById(@Param("id", ParseBoolPipe) id: number): string { // Use Built-In Pipes
         console.log(id, typeof (id));
         return "Book By ID";
+    };
+
+    @Post("/uploadBook")
+    @UseInterceptors(BookInterceptor) // Run Interceptor
+    helloworld(
+        // @Req() req: Request,
+        // @Res() res: Response
+    ): any {
+        // return res.json(req.body);
+        return "Running API With Interceptor";
     };
 
     @Post("/addBook")

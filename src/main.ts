@@ -16,7 +16,7 @@ async function bootstrap() {
 
   app.use(globalMiddleware); // Only Function Middleware Proper Working In Global Middleware
 
-  app.useGlobalGuards(new BookGuard()); // Guard Working Global App
+  // app.useGlobalGuards(new BookGuard()); // Guard Working Global App
 
   await app.listen(8080);
 
