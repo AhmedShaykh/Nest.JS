@@ -1,7 +1,7 @@
 import { Controller, Get, UseGuards, Request } from "@nestjs/common";
 import { AuthGuard } from "@nestjs/passport";
 
-@Controller("authloc")
+@Controller("auth")
 export class AuthLocController {
 
     constructor() { };
