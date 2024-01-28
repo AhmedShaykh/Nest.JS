@@ -3,4 +3,5 @@ export class AuthUserEntity {
     password: string;
     email: string;
     age: number;
+    role: string;
 };
