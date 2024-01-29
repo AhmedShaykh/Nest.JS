@@ -7,6 +7,7 @@ import { AuthLocController } from "./auth-loc/authloc.controller";
 import { AuthUserModule } from "./auth-jwt/user/authuser.module";
 import { AuthController } from "./auth-jwt/auth.controller";
 import { AuthModule } from "./auth-jwt/auth/auth.module";
+import { ConfigModule } from "@nestjs/config";
 import { Module } from "@nestjs/common";
 
 @Module({
@@ -16,12 +17,16 @@ import { Module } from "@nestjs/common";
         // UsersModule,
         // AuthLocUserModule,
         // AuthLocalModule,
-        AuthUserModule,
-        AuthModule
+        // AuthUserModule,
+        // AuthModule,
+        ConfigModule.forRoot({
+            isGlobal: true,
+            envFilePath: ".env.local" // Default By .ENV File Run Given Only Specific File Has You Need
+        })
     ],
     controllers: [
         // AuthLocController,
-        AuthController
+        // AuthController
     ],
     providers: [],
     exports: []

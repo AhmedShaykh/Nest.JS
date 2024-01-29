@@ -8,6 +8,7 @@ function globalMiddleware(req: Request, res: Response, next: NextFunction) { // 
   console.log("Checking Global Middleware");
 
   next();
+
 };
 
 async function bootstrap() {
@@ -18,7 +19,9 @@ async function bootstrap() {
 
   // app.useGlobalGuards(new BookGuard()); // Guard Working Global App
 
-  await app.listen(8080);
+  console.log(process.env.LOGGING);
+
+  await app.listen(process.env.PORT);
 
 };
 
