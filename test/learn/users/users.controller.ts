@@ -23,11 +23,11 @@ export class UsersController {
     // return this.usersService.findAll();
   };
 
-  @Get(":id")
-  findOne(@Param("id") id: string) {
-    throw new UserException(); // Custom Exception
-    // return this.usersService.findOne(+id);
-  };
+  // @Get(":id")
+  // findOne(@Param("id") id: string) {
+  //   throw new UserException(); // Custom Exception
+  //   // return this.usersService.findOne(+id);
+  // };
 
   @Patch(":id")
   update(@Param("id") id: string, @Body() updateUserDto: UpdateUserDto) {
@@ -37,6 +37,14 @@ export class UsersController {
   @Delete(":id")
   remove(@Param("id") id: string) {
     return this.usersService.remove(+id);
+  };
+
+  @Get("/user/:userId/:test")
+  routeParams(@Param() params: any): string { // Routes Parameters
+    return `
+            This Is Routes Parameters With Checking 
+            User ID & Test Number: ${params.userId} & ${params.test}
+          `;
   };
 
 };
