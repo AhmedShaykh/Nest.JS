@@ -27,8 +27,4 @@ export class BookService {
     getBooks(): Book[] {
         return this.books;
     };
-
-    getBookId(bookId: string): Book {
-        return uuidv4();;
-    };
 };

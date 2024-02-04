@@ -12,11 +12,11 @@ import { Module } from "@nestjs/common";
 
 @Module({
     imports: [
-        // RootModule,
-        // BookModule,
-        // UsersModule,
-        // AuthLocUserModule,
-        // AuthLocalModule,
+        RootModule,
+        BookModule,
+        UsersModule,
+        AuthLocUserModule,
+        AuthLocalModule,
         AuthUserModule,
         AuthModule,
         ConfigModule.forRoot({
@@ -25,7 +25,7 @@ import { Module } from "@nestjs/common";
         })
     ],
     controllers: [
-        // AuthLocController,
+        AuthLocController,
         AuthController
     ],
     providers: [],

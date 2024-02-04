@@ -26,7 +26,9 @@ export class BookDataPipe implements PipeTransform { // Create Custom Pipe
         const errors = await validate(bookClass);
 
         if (errors.length > 0) {
+
             throw new BadRequestException("Validations Failed" + JSON.stringify(errors));
+
         }
 
         console.log(value, typeof (value));

@@ -17,7 +17,7 @@ async function bootstrap() {
 
   app.use(globalMiddleware); // Only Function Middleware Proper Working In Global Middleware
 
-  // app.useGlobalGuards(new BookGuard()); // Guard Working Global App
+  app.useGlobalGuards(new BookGuard()); // Guard Working Global App
 
   console.log(process.env.LOGGING);
 

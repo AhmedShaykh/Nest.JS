@@ -23,6 +23,6 @@ import { Module } from "@nestjs/common";
         AuthService,
         JWTStrategy
     ],
-    exports: [AuthService]
+    exports: [AuthService] // Important
 })
 export class AuthModule { };
