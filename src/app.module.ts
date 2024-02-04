@@ -12,13 +12,13 @@ import { Module } from "@nestjs/common";
 
 @Module({
     imports: [
-        RootModule,
-        BookModule,
-        UsersModule,
+        // RootModule,
+        // BookModule,
+        // UsersModule,
         // AuthLocUserModule,
         // AuthLocalModule,
-        // AuthUserModule,
-        // AuthModule,
+        AuthUserModule,
+        AuthModule,
         ConfigModule.forRoot({
             isGlobal: true,
             envFilePath: ".env.local" // Default By .ENV File Run Given Only Specific File Has You Need
@@ -26,7 +26,7 @@ import { Module } from "@nestjs/common";
     ],
     controllers: [
         // AuthLocController,
-        // AuthController
+        AuthController
     ],
     providers: [],
     exports: []
