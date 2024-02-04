@@ -5,7 +5,7 @@ import { Module } from "@nestjs/common";
 @Module({
     imports: [OrdersModule2, OrdersModule3],
     controllers: [],
-    providers: [],
+    providers: []
 })
 export class OrdersModule {
     constructor() {

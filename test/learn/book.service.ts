@@ -4,19 +4,19 @@ import { Injectable } from "@nestjs/common";
 export class BookService {
 
     addBook(): string {
-        return "Add A New Book"
+        return "Add A New Book";
     };
 
     deleteBook(): string {
-        return "Deleting Book"
+        return "Deleting Book";
     };
 
     updateBook(): string {
-        return "Update New Book"
+        return "Update New Book";
     };
 
     findAllBooks(): string {
-        return "Find All Books"
+        return "Find All Books";
     };
 
     findOne(params): string {

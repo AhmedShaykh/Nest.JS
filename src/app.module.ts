@@ -12,8 +12,8 @@ import { Module } from "@nestjs/common";
 
 @Module({
     imports: [
-        // RootModule,
-        // BookModule,
+        RootModule,
+        BookModule,
         UsersModule,
         // AuthLocUserModule,
         // AuthLocalModule,

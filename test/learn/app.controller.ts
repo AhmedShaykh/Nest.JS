@@ -1,3 +1,5 @@
+import { BookExceptionFilter } from "./users/Exceptions/book.exception.filter";
+import { BookService } from "./book.service";
 import {
     BadRequestException,
     Controller,
@@ -8,13 +10,11 @@ import {
     Put,
     UseFilters
 } from "@nestjs/common";
-import { BookExceptionFilter } from "./users/Exceptions/book.exception.filter";
-import { BookService } from "./book.service";
 
 @Controller("book")
 export class BookController {
 
-    constructor(private bookService: BookService) { }; // Nest.JS Provided Object
+    constructor(private readonly bookService: BookService) { }; // Nest.JS Provided Object
 
     @Post("/add")
     addBook(): string {
@@ -32,10 +32,10 @@ export class BookController {
     };
 
     @Get("/find")
-    @UseFilters(BookExceptionFilter)
+    @UseFilters(BookExceptionFilter) // Exception
     findAllBooks(): string {
         throw new BadRequestException();
-        return this.bookService.findAllBooks();
+        // return this.bookService.findAllBooks();
     };
 
     @Get("get/:bookId")

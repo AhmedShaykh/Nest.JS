@@ -18,15 +18,9 @@ export class BookGuard implements CanActivate {
 
         console.log("Guard Checking...");
 
-        // const requestKey = req.headers["key"];
-
-        // if (requestKey === undefined) return false;
-
-        // return requestKey === this.key;
-
         if (req.header("username") === undefined && req.header("password") === undefined) return false;
 
-        return req.header("username") === this.username && req.header("password") === this.password
+        return req.header("username") === this.username && req.header("password") === this.password;
     };
 
 };

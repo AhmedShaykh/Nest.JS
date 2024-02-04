@@ -25,7 +25,7 @@ import { Request, Response } from "express";
 // @UseGuards(new BookGuard) // Add Guard This API Run In Postman & It Work Class All Methods
 export class BookController {
 
-    constructor(private bookService: BookService) { };
+    constructor(private readonly bookService: BookService) { };
 
     @Get("/books")
     @UseGuards(new BookGuard) // It Work Specific Method
@@ -40,7 +40,7 @@ export class BookController {
     };
 
     @Get("/:id")
-    findBookById(@Param("id", ParseBoolPipe) id: number): string { // Use Built-In Pipes
+    findBookById(@Param("id", ParseBoolPipe) id: boolean): string { // Use Built-In Pipes
         console.log(id, typeof (id));
         return "Book By ID";
     };
@@ -48,10 +48,10 @@ export class BookController {
     @Post("/uploadBook")
     @UseInterceptors(BookInterceptor) // Run Interceptor
     helloworld(
-        // @Req() req: Request,
-        // @Res() res: Response
+        @Req() req: Request,
+        @Res() res: Response
     ): any {
-        // return res.json(req.body);
+        return res.json(req.body);
         return "Running API With Interceptor";
     };
 
